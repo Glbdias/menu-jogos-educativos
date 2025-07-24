@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu de Jogos</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+    }
+
+    header {
+      background-color: #1e1e2f;
+      color: white;
+      padding: 15px 20px;
+      text-align: center;
+      font-size: 1.5em;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      background-color: #2c2c3e;
+    }
+
+    nav a {
+      color: white;
+      padding: 15px 20px;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+
+    nav a:hover {
+      background-color: #44445e;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .card {
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.2s ease;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    iframe {
+      width: 100%;
+      height: 900px;
+      border: none;
+      /* margin-top: 20px; */
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .show {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <header>Menu de Jogos</header>
+
+  <nav>
+    <a href="#" onclick="mostrarMenu()">🏠 Início</a>
+  </nav>
+
+  <div id="selecao" class="container">
+    <div class="card" onclick="carregarJogo('https://recicle-e-ganhe-nu.vercel.app/')">
+      <h3>Recicle e Ganha</h3>
+      <p>Ajude o meio ambiente brincando!</p>
+    </div>
+
+    <!-- <div class="card" onclick="carregarJogo('https://seusite.com/jogos/jogo-da-memoria')">
+      <h3>Jogo da Memória</h3>
+      <p>Desafie seu cérebro com este clássico.</p>
+    </div>
+
+    <div class="card" onclick="carregarJogo('https://seusite.com/jogos/caca-palavras')">
+      <h3>Caça-palavras</h3>
+      <p>Encontre as palavras escondidas.</p>
+    </div> -->
+  </div>
+
+  <iframe id="jogo" class="hidden"></iframe>
+
+  <script>
+    function carregarJogo(url) {
+      document.getElementById('selecao').style.display = 'none';
+      const iframe = document.getElementById('jogo');
+      iframe.src = url;
+      iframe.classList.remove('hidden');
+    }
+
+    function mostrarMenu() {
+      document.getElementById('selecao').style.display = 'grid';
+      const iframe = document.getElementById('jogo');
+      iframe.src = '';
+      iframe.classList.add('hidden');
+    }
+  </script>
+
+</body>
+</html>
